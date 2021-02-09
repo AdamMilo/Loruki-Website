@@ -1,0 +1,503 @@
+/*######BASE CSS RESET FOR THE ENTIRE FILE#######*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+/*CSS VARIABLES (custom properties)*/
+
+:root {
+  /*Defining the variable scope to the root(global-scope)*/
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+* {
+  box-sizing: bored-box; /*padding and margin don't increase width*/
+  padding: 0;
+  margin: 0; /*deleting padding and margin on everything*/
+}
+/*Setting the font,text color and line spacing for our pages*/
+body {
+  font-family: "Lato", sans-serif;
+  color: #333;
+  line-height: 1.6; /*To make everyhitng spread out a little*/
+}
+/*Deleting the default styles for <ul>,<a> elements */
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/*styling our general elements*/
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+  width: 100%; /*Keeps the images within their container*/
+}
+p {
+  margin: 10px 0;
+}
+img {
+  width: 100%;
+}
+code,
+pre {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+/*##############NAV-BAR#################*/
+/*NavBar(Bar) that will stretch all the way across the page*/
+.navBar {
+  background-color: var(--primary-color);
+  color: #fff;
+  height: 70px; /*fixed height of the nav_bar*/
+}
+/*styles ul tag-elements inside said class container*/
+.navBar ul {
+  display: flex;
+}
+.navBar a {
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+}
+/*adds a border when hovering over any <a> of the parent class*/
+.navBar a:hover {
+  border-bottom: 2px #fff solid;
+}
+/*adds rules to any elements that have both of these classes*/
+/*note that there is no space between class names*/
+.NavBar .flex {
+  justify-content: space-between;
+}
+
+/*SHOWCASE*/
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: #fff;
+  position: relative; /*parent:relative used for...*/
+  /*enabling absolute positioning of child elements*/
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+.showcase p {
+  margin: 20px 0; /*top/Bottom 20 left/righ 0*/
+}
+.showcase-text {
+  /*Animation*/
+  animation: slideInFromLeft 1s ease-in;
+}
+
+/*customizing our general 'grid-class' */
+.showcase .grid {
+  overflow: visible;
+  grid-template-columns: 55% 45%;
+  gap: 30px;
+}
+
+.showcase-form {
+  position: relative; /*position 'relative'*/
+  /*in order to use top/bottom properties*/
+  top: 60px;
+  height: 350px; /*make the child element overflow*/
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-content: flex-end;
+  /*animation*/
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form .form-control {
+  margin: 30px 0; /*separates the inputs*/
+}
+
+/*target specifically the inputs with the type text and email*/
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+/*Removing the outline of our inputs when selected by user*/
+.showcase-form input:focus {
+  outline: none;
+}
+
+/*Creating an angle(slant to our showcase section element*/
+/*make sure that .showcase has position (relative)*/
+.showcase:after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  left: 0;
+  right: 0;
+  bottom: -60;
+  background: white;
+  transform: skewY(-3deg);
+  /*compatibility prefixes*/
+  -webkit-transform: skewY(-3deg); /*chrome*/
+  -moz-transform: skewY(-3deg); /*mozzila*/
+  -ms-transform: skewY(-3deg); /*explorer*/
+  /*Not sure if we need them any more*/
+}
+/*you have to have a content property  when using before or after*/
+/*Element will only appear, if we have defined: height/width */
+/*and top/bottom left and right property value*/
+
+/*###########STATS###########*/
+.stats {
+  padding-top: 100px;
+  height: 200px;
+  /*animation*/
+  animation: slideInFromBottom 1s ease-in;
+}
+.stats .grid {
+  grid-auto-rows: 300px;
+}
+.stats-heading {
+  max-width: 500px;
+  margin: 40px auto;
+}
+.stats .grid h3 {
+  font-size: 35px;
+}
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+.stats .grid .stats_img {
+  transform: scale(0.8);
+}
+
+/*###########CLI##############*/
+.cli .grid {
+  margin-top: 100px;
+  height: 600px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-columns: max-content(100px);
+}
+
+.cli .grid > *:first-child {
+  /*First child is spanning two rows and two columns*/
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: 0;
+  padding: 0;
+}
+.cli .card1 {
+  margin-bottom: -150px;
+}
+.cli .card2 {
+  margin-top: -150px;
+}
+/*####CLOUD SECTION (USING GRID)#####*/
+.cloud {
+  width: 100%;
+  height: 500px;
+}
+.cloud .container {
+  height: 400px;
+  overflow: visible;
+  margin: 0 auto;
+}
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/*####LANGUAGES SECTION###*/
+.languages .flex {
+  flex-wrap: wrap;
+  /*makes the content go to the next line
+   if it overflows(if browser becomes smaller*/
+}
+.languages h2 {
+  margin-bottom: -150px;
+}
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.languages .card {
+  text-align: center;
+  margin: 18px 10px 40px; /*18(top/bottom_ 10left, 40right*/
+  transition: transform 0.2s ease-in;
+}
+.languages .card:hover {
+  transform: translateY(-15px);
+  /*negative (-Yaxis) moves elements up*/
+  /*positive (+Yaxis) moves elements down*/
+}
+
+/*####FOOOTER#####*/
+.footer {
+  height: 100px;
+}
+.footer .social a {
+  margin: 0 10px;
+}
+.footer .container {
+  margin: 0 auto;
+  grid-auto-columns: 10px;
+}
+
+.footer .grid {
+  justify-content: space-evenly;
+}
+
+/*#####FEATURES html-page(start)#######*/
+
+/*###HEAD SECTION###########*/
+.features-head {
+  height: 300px;
+}
+.features-head img,
+.docs-head img {
+  width: 200px; /*default is always 100% of parent element*/
+  justify-self: flex-end;
+  /*pushes just the image in the grid to the far right*/
+}
+/*meaking both the image from the head and sub head
+appear on the right end of the page*/
+.features-sub-head {
+  height: 300px;
+  background: var(--light-color);
+}
+.features-sub-head img {
+  width: 300px;
+  justify-self: end;
+}
+
+/*####MAIN SECTION####*/
+.features-main {
+  height: 600px;
+  margin-top: -80px;
+}
+.features-main .grid {
+  transform: scale(0.7);
+  padding: 50px;
+  row-gap: 60px;
+  grid-auto-rows: 100px;
+}
+.features-main .grid > *:first-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.features-main .grid > *:nth-child(4) {
+  grid-row: 3/5;
+}
+.features-main .grid .card {
+  transition: transform 200ms ease-in;
+}
+.features-main .grid .card:hover {
+  transform: translateY(-10px);
+}
+.features-main .grid i {
+  transform: scale(4);
+}
+
+.features-main .grid .card i {
+  justify-self: flex-start;
+  margin: 30 50 20;
+}
+.features-main .grid .card p {
+  justify-self: flex-end;
+}
+/*#####FEATURES html-page(end)#######*/
+/*######DOCS html page(start)########*/
+/*docs-head*/
+.docs-head {
+  height: 300px;
+}
+/*docs-main*/
+.docs-main {
+  height: 850px;
+}
+.docs-main h3 {
+  margin: 20px 0;
+}
+.docs-main .grid {
+  /*making the second column wider (twice as wide)*/
+  grid-template-columns: 1fr 2fr;
+  /*Aligns both cards to the start of their columns(top)*/
+  align-items: flex-start;
+}
+.docs .docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+.docs-main a:hover {
+  font-weight: bold;
+}
+/*######DOCS html page(end)########*/
+/*####MEDIA QUERIES#####*/
+
+/*######ANIMATIONS#######*/
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/*Tablets and under*/
+@media (max-width: 768px) {
+  /*selecting the grid and all of the classes to which*/
+  /*we've also added the .grid class*/
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr;
+    /*elements take up an entire column*/
+    grid-template-rows: 1fr;
+    /*elements take up an entire row*/
+    /*all elements stack on top of each other now*/
+  }
+  .features-head,
+  .features-sub-head,
+  .docs-head {
+    text-align: center;
+  }
+  .features-head {
+    height: auto; /*Makes the height fit the content*/
+  }
+
+  .features-main {
+    height: auto;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer .grid {
+    height: auto;
+  }
+
+  /*Next, make all the image elements inside our  */
+  /*containers, align(justify themselves) to the center*/
+  .features-head img,
+  .features-sub-head img,
+  .docs-head img {
+    justify-self: center;
+  }
+  .features-sub-head .grid {
+    height: auto;
+  }
+  .features-main {
+    height: auto;
+    width: auto;
+  }
+  .features-sub-head img {
+    display: none; /*removes the large image on small screen*/
+  }
+
+  .features-main .grid {
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    gap: 120px;
+  }
+  .features-main .grid > * {
+    height: 150px;
+  }
+  /*Take the first and second child element inside the grid*/
+  .features-main .grid > *:first-child {
+    grid-row: span 1;
+    grid-column: span 1;
+    width: auto;
+  }
+  .features-main .grid > *:nth-child(4) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .features-main .grid > *:nth-child(2) {
+    padding: 30px;
+  }
+
+  .showcase {
+    height: auto; /*adjusts height to fit the content*/
+  }
+  .showcase-text {
+    text-align: center;
+    margin-top: 40px;
+    /*Animation*/
+    animation: slideInFromTop 1s ease-in;
+  }
+  .showcase-form {
+    justify-self: center;
+    margin: auto; /*vertically and horizontally aligns element*/
+    /*Animation*/
+    animation: slideInFromBottom 1s ease-in;
+  }
+  .cli .grid > *first-child {
+    grid-column: 1;
+    grid-row: 1;
+    /*resets the value so that the first=child element*/
+    /*no longer stretches over a span of rows/columns*/
+    /*but now returns to its default 1column/1row span(1cell*/
+  }
+}
+
+/*Mobile*/
+@media (max-width: 500px) {
+  .navBar {
+    height: 110px;
+  }
+  .navBar .flex {
+    flex-direction: column;
+    /*puts elements in the nav on top of each other*/
+  }
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    /*Gives the ul containers a transparent background*/
+  }
+}
